@@ -1,0 +1,894 @@
+/* 1 RESET +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap");
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+img {
+    display: block;
+    max-width: 100%;
+}
+/* ---------------------- VARIABLE ---------------------- */
+
+:root {
+    --color-primario: #8e1719;
+    --color-secundario: #cd8f63;
+    --color-terciario: #1e1e1e;
+    --color-blanco: #ffff;
+    --color-negro: rgb(0, 0, 0);
+}
+
+
+
+
+/*2 HEADER +++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    /*Flexbox*/
+    display: flex;
+
+    /*Alinear los elementos con un espacio */
+    justify-content: flex-start;
+
+    /*Ajustamos el ancho maximo*/
+    max-width: 100%;
+    
+    /*Tamaño letra con medidas relativas raiz*/
+    font-size: 1.8vw;
+
+    /*Relleno*/
+    padding: .5rem 2rem .5rem 1rem;
+
+    /*color de fondo*/
+    background-color: #8e1719;
+
+    /*color de letras*/
+    color: white;
+}
+
+.header .info {
+    display: flex;
+    margin: 0 2vw;
+    gap: 1.5vw;
+}
+
+.header .info p{
+    display: grid;
+    place-content: center;
+}
+
+.header i {
+    font-size: 2.5vw;
+}
+
+
+/* 3 NAVBAR +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+.navbar {
+    display: flex;
+
+    /*space-between los alinea a los extremos a diferencia de space-around*/
+    justify-content: space-between;
+
+    align-items: center;
+    max-width: 100%;
+    height: fit-content;
+    background-color: #1e1e1e;
+    color: white;
+
+    position: relative;
+}
+
+.navbar-logo {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+}
+.navbar-logo img {
+    text-align: center;
+    width: 3rem; /*intentar con 15 vw*/
+    height: 3rem; /*intentar con 15 vw*/
+    padding: 5% 5% 5% 5%;
+}
+
+/* titulo si es necesario, la imagen ya la tiene
+.brand-title {
+    font-size: 1.5rem;
+    padding-left: .5rem;
+}
+*/
+
+.navbar-links ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-links li {
+    /*quitamos los puntos de lista*/
+    list-style: none;
+}
+
+.navbar-links li a {
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+    display: block;
+}
+
+.navbar-links li:hover {
+    background-color: #555;
+}
+
+.toggle-button {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 1.8rem;
+    height: 1.5rem;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10%;
+}
+
+/* hacemos aparecer un boton desplegable si el ancho es menor a *500px*/
+@media (max-width: 495px) {
+    .toggle-button {
+        display: flex;
+        align-self: end;
+        margin: .8rem 1rem 0 0;
+    }
+
+    /*Ocultamos el titulo para que no ocupe mucho espacio*/
+    .navbar-logo .brand-title {
+        display: none;
+    }
+
+    /*ocultamos los links y hacemos que ocupe el tamaño del contenedor*/
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+
+    /*Lo ponemos debajo y luego lo movemos a la izquierda*/
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /*centramos y lo ponemos en forma de columna/lista*/
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links li {
+        text-align: center;
+    }
+
+    /*eliminamos el relleno para que sea mas chico*/
+    .navbar-links li a {
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+}
+
+
+
+
+
+/* COMPONENTES ++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+/* ----------------------- BUTTONS ---------------------- */
+
+.btn-primario {
+    display: flex;
+    justify-content: flex-start;
+    width: fit-content;
+    padding: 0.6875rem 3rem;
+    border: 2px solid var(--color-blanco);
+    color: var(--color-blanco);
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* ------------------------ TITLE ----------------------- */
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0px auto 5.0625rem auto;
+    text-align: center;
+}
+
+.title h2 {
+    font-size: 3.25rem;
+    font-weight: 400;
+    color: var(--color-secundario);
+}
+
+.title p {
+    font-size: 1.12rem;
+}
+
+/* ----------------------- BANNER ----------------------- */
+
+.banner-container {
+    position: relative;
+}
+
+.banner {
+    width: 100%;
+    max-height: 570px;
+    min-height: 270px;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.25rem;
+    font-weight: 600;
+    color: var(--color-blanco);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+}
+
+.banner::before {
+    content: "";
+    background: rgba(0, 0, 0, 0.185);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.banner h2 {
+    z-index: 1;
+}
+
+.down-arrow {
+    background-color: var(--color-blanco);
+    z-index: 1;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -35px;
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+.down-arrow:hover {
+    transform: translateX(-50%) scale(1.1);
+}
+
+/* -------------------- NOTA FLOTANTE ------------------- */
+
+.nota-flotante {
+    max-width: 596px;
+    width: 50%;
+    padding: 2.5rem;
+    position: absolute;
+    right: 0;
+    top: 40%;
+    font-weight: 400;
+    background-color: var(--color-blanco);
+}
+
+.nota-flotante-right {
+    font-weight: 400;
+    max-width: 596px;
+    width: 50%;
+    padding: 2.5rem;
+    position: absolute;
+    left: 0;
+    top: 20%;
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+}
+
+.nota-flotante p,
+.nota-flotante-right p {
+    font-size: 1.25rem;
+}
+
+.nota-flotante h3,
+.nota-flotante-right h3 {
+    color: var(--color-secundario);
+    font-size: 2.31rem;
+    font-weight: 400;
+}
+
+/* -------------------- PRESENTACION -------------------- */
+
+.presentacion-container {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 690px;
+}
+.presentacion__img {
+    width: 50%;
+    background: url(/img/contacto/Carne-asada-form.png) no-repeat;
+    background-position: 33% 100%;
+}
+
+.presentacion__content {
+    width: 50%;
+    color: var(--color-blanco);
+    background-color: var(--color-primario);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5.75rem 2.5rem;
+}
+
+/* -------------------- MEDIA QUERIES ------------------- */
+@media screen and (max-width: 768px) {
+    .banner {
+        font-size: 2.5rem;
+    }
+    .nota-flotante {
+        position: relative;
+        padding: 2.5rem 0 0 0;
+        width: 100%;
+    }
+
+    .title {
+        margin: 0px auto 3.0625rem auto;
+    }
+    .title h2 {
+        font-size: 2.5rem;
+    }
+    .presentacion__img {
+        width: 100%;
+        min-height: 600px;
+    }
+    .presentacion__content {
+        width: 100%;
+        min-height: 600px;
+    }
+}
+
+
+
+
+/* 4.5 CONTAINERS ++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+/* ---------------------- PADDINGS ---------------------- */
+
+.padding-container {
+    padding: 5.0625rem 0;
+}
+.padding-container-2 {
+    padding: 5.0625rem 0 0 0;
+}
+
+/* ---------------------- CONTAINER --------------------- */
+
+.container {
+    margin: 0 auto;
+    position: relative;
+}
+
+@media screen and (max-width: 576px) {
+    .container {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+}
+@media screen and (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+@media screen and (min-width: 1400px) {
+    .container {
+        max-width: 1230px;
+    }
+}
+
+
+
+
+
+
+
+/* 5 HOME (SECTION) ++++++++++++++++++++++++++++++++++++++++++++*/
+/* * {
+    margin: 0;
+    padding: 0;    
+    box-sizing: border-box;
+} */
+
+/*----------------Carrusel-------------------*/
+
+/*ejemplo 2
+.content {
+    
+    
+    display: flex;
+    justify-content: center;
+    padding-top: .5%;
+    
+}
+*/
+
+.carousel {
+    /*ejemplo 2
+    width: 95%;
+    */
+    max-width: 100%;
+    justify-content: center;
+    background-color: lightskyblue;
+    overflow: hidden;
+}
+
+.carousel .big-container {
+    width: 200%;
+    background-color: orange;
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.5s ease;
+    transform: translateX(0%);
+}
+
+.carousel .img {
+    width: calc(100% / 2);
+    background-color: lime;
+}
+
+.carousel .points {
+    width: 100%;
+    background-color: red;
+    padding: 0 1em;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel .point {
+    width: 0.8em;
+    height: 0.8em;
+    margin: 1%;
+    list-style: none;
+    border-radius: 50%;
+    background-color: lightskyblue;
+}
+
+.carousel .point.active {
+    background-color: orange;
+}
+
+
+/*Texto el mejor lugar para comer*/
+.bestPlace {
+    max-width: 100%;
+    width: 100%;
+    height: 15vw;
+    display: grid;
+    place-content: center;
+    font-size: 2.5rem;
+}
+
+.bestPlace p {
+    font-size: 3vw;
+}
+
+
+/*Imagen de cocina y texto "El mejor lugar para comer"---*/
+.cocina {
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    margin-bottom: 10%;
+    background-color: #8e1719;
+    color: white;
+
+}
+
+.cocina img {
+    width: 50%;
+}
+
+.cocina p {
+    float: right;
+    width: 50%;
+    font-size: 3vw;
+    text-align: center;
+    /*centrar el texto con grid*/
+    display: grid;
+    place-content: center;
+    
+}
+
+.bisteck {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    display: grid;
+}
+
+.bisteck img {
+    width: 100%;
+}
+
+.bisteck p {
+    position: absolute;
+    background-color: #8e1719;
+    color: white;
+    font-size: 3vw;
+    text-align: center;
+    right:0;
+    left: 0;
+    top: 0;
+    bottom: 70%;
+    display: grid;
+    place-content: center;
+}
+
+/*--Redes sociales------------------------*/
+
+.social {
+    display: flex;
+    flex-direction: column;
+    margin: 1vw;
+    gap: 5vw;
+
+    /*El tamaño de los iconos se camnia con font-size*/
+
+    font-size: 10vw;
+}
+
+.social p {
+    display: grid;
+    place-content: center;
+    font-size: 5vw;
+    color: #8e1719;
+}
+
+.social-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.social-icons a {
+    color: #8e1719;
+    size: 15vw;
+
+}
+
+/*footer----------------------------------*/
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    background-color: #1e1e1e;
+    color: white;
+    margin: 1vw 0 0 0;
+    padding: 1vw;
+    font-size: 3vw ;
+}
+
+.footer-logo {
+    display: grid;
+    place-content: center;
+}
+
+.footer-logo img {
+    width:  15vw;
+    height: 15vw;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    font-size: 2vw;
+}
+
+.footer-content ul {
+    list-style: none;
+    margin: 0 0 1vw 0;
+}
+
+.footer-content li {
+    font-size: 1.3vw;
+}
+
+.footer-content li a {
+    display:flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    font-size: 1.3vw;
+    text-decoration: none;
+    color: white;
+}
+
+.footer-content li a:hover{
+    color: #8e1719
+}
+
+.reserve {
+    display: grid;
+    place-content: center;
+    font-size: 1vw;
+    background-color: black;
+    text-align: center;
+    padding: 1vw 0 1vw 0;
+}
+
+
+
+
+
+/* 6 NOSOTROS ++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+/* ----------------------- BANNER ----------------------- */
+
+.nosotros--banner {
+    background-image: url(../img/nosotros/banner.png);
+}
+
+/* ------------------- NUESTROS CHEFS ------------------- */
+
+.section-chefs {
+    background: var(--color-primario);
+}
+.title--chefs h2 {
+    color: var(--color-blanco);
+    text-transform: capitalize;
+}
+
+.chefs-container {
+    display: flex;
+    /* flex-wrap: wrap; */
+    /* display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
+    justify-content: center;
+    gap: 1.8rem;
+}
+
+.cheft-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 327px;
+    color: var(--color-blanco);
+    justify-content: space-around;
+    gap: 7px;
+    transition: all 300ms;
+}
+.cheft-card h3 {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 400;
+}
+.cheft-card__img {
+    width: 100%;
+}
+
+.cheft-card p {
+    font-size: 0.93rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.466);
+    margin-bottom: 7px;
+}
+.cheft-card .cheft-card__redes {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 0 5px;
+}
+.cheft-card__redes img {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    background: var(--color-blanco);
+    border-radius: 50%;
+    padding: 3px;
+    transition: all 300ms;
+}
+
+.cheft-card__redes img:hover {
+    transform: scale(1.08);
+}
+
+/* --------------------- COMENTARIOS -------------------- */
+.comentarios-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+.comentario {
+    padding: 3rem;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.212);
+    max-width: 600px;
+    min-height: 270px;
+}
+.comentario__description {
+    margin-bottom: 21px;
+}
+.comentario__user {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.comentario__user__name h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+.comentario__user__name p {
+    color: var(--color-primario);
+    font-size: 0.9375rem;
+}
+
+.comentario-slider-rounded {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 174px;
+    margin-top: 3.9375rem;
+}
+.comentario-slider-rounded__round {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid var(--color-secundario);
+    cursor: pointer;
+}
+.comentario-slider-rounded__round.active {
+    background-color: var(--color-secundario);
+}
+
+/* ------------------- MEDIAS QUERIES ------------------- */
+@media screen and (max-width: 992px) {
+    .chefs-container {
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .comentarios-container {
+        flex-wrap: wrap;
+    }
+    .cheft-card {
+        flex-basis: 220px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* 7 MENU ++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+.menu--banner {
+    background-image: url(../img/menu/banner.png);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 8 CONTACT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+/* ----------------------- BANNER ----------------------- */
+.contact--banner {
+    background-image: url(../img/contacto/banner.png);
+}
+
+/* ------------------------ FORM ------------------------ */
+.form-reservacion {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    gap: 2.1875rem;
+    height: 100%;
+}
+.form-reservacion input[type="email"],
+input[type="tel"],
+select {
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+.form-reservacion h3 {
+    font-size: 1.875rem;
+}
+
+/* ------------------------- MAP ------------------------ */
+
+.ubicacion__map iframe {
+    display: block;
+    margin: 0 0 0 auto;
+    width: 90%;
+    min-height: 600px;
+}
+
+
+
+
